@@ -1,10 +1,10 @@
-﻿using System;
-using BankApp.BankData;
+﻿using BankApp.BankData;
 using BankApp.Libraries;
+using System;
 
 namespace BankApp.Helpers
 {
-    internal class BankOperations
+    public class BankOperations
     {
         /// <summary>
         /// for creating new customer profile

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BankApp.BankData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BankApp.BankData;
 
 namespace BankApp.Libraries
 {

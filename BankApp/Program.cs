@@ -1,5 +1,5 @@
-﻿using System;
-using BankApp.Helpers;
+﻿using BankApp.Helpers;
+using System;
 
 namespace BankApp
 {

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using BankApp.BankData;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using BankApp.BankData;
-using BankApp.Helpers;
 
 namespace BankApp.Libraries
 {
@@ -144,6 +143,11 @@ namespace BankApp.Libraries
             Console.WriteLine($"Printing the infos of all accounts owned by {this.FullName}");
             Console.WriteLine(report.ToString());
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public List<Account> GetAccounts()
+        {
+            return _allAccounts;
         }
     }
 }
