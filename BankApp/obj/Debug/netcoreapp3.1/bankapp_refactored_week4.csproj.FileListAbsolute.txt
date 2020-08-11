@@ -1,0 +1,4 @@
+C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\obj\Debug\netcoreapp3.1\bankapp_refactored_week4.AssemblyInfoInputs.cache
+C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\obj\Debug\netcoreapp3.1\bankapp_refactored_week4.AssemblyInfo.cs
+C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\obj\Debug\netcoreapp3.1\bankapp_refactored_week4.csproj.CoreCompileInputs.cache
+C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\obj\Debug\netcoreapp3.1\bankapp_refactored_week4.csprojAssemblyReference.cache
