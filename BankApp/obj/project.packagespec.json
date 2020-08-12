@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\bankapp_refactored_week4.csproj",
-    "projectName": "bankapp_refactored_week4",
-    "projectPath": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\bankapp_refactored_week4.csproj",
-    "outputPath": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\obj\\",
+    "projectUniqueName": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\BankApp\\BankApp.csproj",
+    "projectName": "BankApp",
+    "projectPath": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\BankApp\\BankApp.csproj",
+    "outputPath": "C:\\Users\\hp\\Documents\\Visual Studio 2019\\Projects\\bankapp_refactored_week4\\BankApp\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Microsoft\\Xamarin\\NuGet"

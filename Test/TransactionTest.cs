@@ -10,14 +10,14 @@ namespace Test
     internal class TransactionTest
     {
         private Customer _mine;
-        private Account newAccount;
+        private Account _newAccount;
 
         [OneTimeSetUp]
         public void SetUp()
         {
             _mine = new Customer("victor", "Nwike", "bondesvick@gmail.com", "ugoo44", "ugoo44");
             _mine.LogIn("ugoo44", "ugoo44");
-            newAccount = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Savings, 30000);
+            _newAccount = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Savings, 30000);
         }
 
         [Test]
@@ -26,14 +26,14 @@ namespace Test
             //Arrange
             _mine.LogIn("ugoo44", "ugoo44");
             decimal amount = 40000;
-            newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
+            _newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
 
             //Act
-            bool confirm = newAccount.GeTransactions()[^1].Amount == amount;
+            bool confirm = _newAccount.GeTransactions()[^1].Amount == amount;
 
             //Assert
             //Assert.True(confirm);
-            Assert.That(confirm, Is.EqualTo(true));
+            Assert.That(confirm, Is.True);
         }
 
         [Test]
@@ -41,15 +41,16 @@ namespace Test
         {
             //Arrange
             _mine.LogIn("ugoo44", "ugoo44");
+            int countBefore = _newAccount.GeTransactions().Count;
+            decimal amount = 40000;
+            _newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
+            int countAfter = _newAccount.GeTransactions().Count;
 
             //Act
-            int countBefore = newAccount.GeTransactions().Count;
-            decimal amount = 40000;
-            newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
-            int countAfter = newAccount.GeTransactions().Count;
+            int expected = countAfter - 1;
 
             //Assert
-            Assert.That(countBefore, Is.EqualTo(countAfter - 1));
+            Assert.That(countBefore, Is.EqualTo(expected));
         }
 
         [Test]
@@ -58,14 +59,14 @@ namespace Test
             //Arrange
             _mine.LogIn("ugoo44", "ugoo44");
             decimal amount = 40000;
-            Transaction theTransaction = newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
+            Transaction theTransaction = _newAccount.MakeDeposit(amount, DateTime.Now, "making deposit");
 
             //Act
-            bool confirm = newAccount.GeTransactions().Any(transaction => transaction == theTransaction);
+            bool confirm = _newAccount.GeTransactions().Any(transaction => transaction == theTransaction);
 
             //Assert
             //Assert.True(confirm);
-            Assert.That(confirm, Is.EqualTo(true));
+            Assert.That(confirm, Is.True);
         }
     }
 }

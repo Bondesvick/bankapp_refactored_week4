@@ -19,12 +19,14 @@ namespace Test
         [Test]
         public void Check_If_Actually_Logged_In()
         {
+            //Arrange
             _mine.LogIn("ugo33", "ugo33");
 
             //Act
             bool confirm = _mine.IsLoggedIn;
 
-            Assert.That(confirm, Is.EqualTo(true));
+            //Assert
+            Assert.That(confirm, Is.True);
         }
 
         [Test]
@@ -35,7 +37,7 @@ namespace Test
             //Act
             bool confirm = _mine.IsLoggedIn;
 
-            Assert.That(confirm, Is.EqualTo(false));
+            Assert.That(confirm, Is.False);
         }
 
         [Test]

@@ -22,6 +22,7 @@ namespace Test
         [Test]
         public void Attempting_To_Deposit_a_Negative_Value()
         {
+            //Act
             _mine.LogIn("ugo", "ugo");
 
             //Assert
@@ -40,6 +41,7 @@ namespace Test
             _accountOne.MakeDeposit(amount, DateTime.Now, "attempting to deposit negative value");
             decimal balAfterDeposit = _accountOne.Balance;
 
+            //Assert
             Assert.That(balB4Deposit, Is.LessThan(balAfterDeposit));
         }
     }

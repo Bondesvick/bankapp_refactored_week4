@@ -49,7 +49,7 @@ namespace Test
         {
             _mine.LogIn("ugoo00", "ugoo00");
 
-            Assert.That(() => _accountOne.MakeWithdrawal(2000000000, DateTime.Now, "attempting withdrawal a negative amount"), Throws.TypeOf<InvalidOperationException>());
+            Assert.That(() => _accountOne.MakeWithdrawal(2000000000, DateTime.Now, "attempting to overdraft"), Throws.TypeOf<InvalidOperationException>());
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace Test
             bool confirm = _accountOne.GeTransactions().Contains(newOne);
 
             //Assert
-            Assert.That(confirm, Is.EqualTo(true));
+            Assert.That(confirm, Is.True);
         }
     }
 }

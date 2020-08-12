@@ -5,8 +5,6 @@
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=603e59ee_002Db748_002D4621_002Dbdd8_002Dbf5ef52c168c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Check_If_Account_Was_added_To_Banks_Account_List" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::CE0A306C-90E8-4CBA-94E0-80642F627BF0::.NETCoreApp,Version=v3.1::Test.RegisterTest.Check_If_Account_Was_added_To_Banks_Account_List&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\Test" Presentation="&amp;lt;Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

@@ -8,16 +8,16 @@ namespace Test
     internal class TransferTest
     {
         private Customer _mine;
-        private Account creditor;
-        private Account beneficiary;
+        private Account _creditor;
+        private Account _beneficiary;
 
         [OneTimeSetUp]
         public void SetUp()
         {
             _mine = new Customer("victor", "Nwike", "bondesvick@gmail.com", "ugoo11", "ugoo11");
             _mine.LogIn("ugoo11", "ugoo11");
-            creditor = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Current, 300000);
-            beneficiary = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Savings, 1000);
+            _creditor = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Current, 300_000);
+            _beneficiary = new Account(_mine, _mine.FullName, _mine.CustomerId, "creating a new savings account", DateTime.Now, AccountType.Savings, 1_000);
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace Test
             _mine.LogOut();
 
             //Assert
-            Assert.That(() => creditor.TransferMoney(beneficiary, 25000, DateTime.Now, "attempting to transfer without logging in"), Throws.TypeOf<InvalidOperationException>());
+            Assert.That(() => _creditor.TransferMoney(_beneficiary, 25_000, DateTime.Now, "attempting to transfer without logging in"), Throws.TypeOf<InvalidOperationException>());
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace Test
             _mine.LogIn("ugoo11", "ugoo11");
 
             //Assert
-            Assert.That(() => creditor.TransferMoney(beneficiary, -25000, DateTime.Now, "attempting to transfer negative amount"), Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(() => _creditor.TransferMoney(_beneficiary, -25_000, DateTime.Now, "attempting to transfer negative amount"), Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Test
             _mine.LogIn("ugoo11", "ugoo11");
 
             //Assert
-            Assert.That(() => creditor.TransferMoney(beneficiary, 250000000, DateTime.Now, "attempting to overdraft "), Throws.TypeOf<InvalidOperationException>());
+            Assert.That(() => _creditor.TransferMoney(_beneficiary, 250_000_000, DateTime.Now, "attempting to overdraft "), Throws.TypeOf<InvalidOperationException>());
         }
 
         [Test]
@@ -54,10 +54,10 @@ namespace Test
             _mine.LogIn("ugoo11", "ugoo11");
 
             //Act
-            decimal creditorsInitialBal = creditor.Balance;
+            decimal creditorsInitialBal = _creditor.Balance;
             decimal amount = 25000;
-            creditor.TransferMoney(beneficiary, amount, DateTime.Now, "transferring funds ");
-            decimal creditorsCurrentBal = creditor.Balance;
+            _creditor.TransferMoney(_beneficiary, amount, DateTime.Now, "transferring funds ");
+            decimal creditorsCurrentBal = _creditor.Balance;
 
             //Assert
             Assert.That(creditorsCurrentBal, Is.EqualTo(creditorsInitialBal - amount));
@@ -68,15 +68,16 @@ namespace Test
         {
             //Arrange
             _mine.LogIn("ugoo11", "ugoo11");
+            decimal beneficiaryInitialBal = _beneficiary.Balance;
+            decimal amount = 25000;
+            _creditor.TransferMoney(_beneficiary, amount, DateTime.Now, "transferring funds ");
+            decimal beneficiaryCurrentBal = _beneficiary.Balance;
 
             //Act
-            decimal beneficiaryInitialBal = beneficiary.Balance;
-            decimal amount = 25000;
-            creditor.TransferMoney(beneficiary, amount, DateTime.Now, "transferring funds ");
-            decimal beneficiaryCurrentBal = beneficiary.Balance;
+            decimal expected = beneficiaryInitialBal + amount;
 
             //Assert
-            Assert.That(beneficiaryCurrentBal, Is.EqualTo(beneficiaryInitialBal + amount));
+            Assert.That(beneficiaryCurrentBal, Is.EqualTo(expected));
         }
 
         [Test]
@@ -84,15 +85,16 @@ namespace Test
         {
             //Arrange
             _mine.LogIn("ugoo11", "ugoo11");
+            int initialNumTransactions = _creditor.GeTransactions().Count;
+            decimal amount = 25000;
+            _creditor.TransferMoney(_beneficiary, amount, DateTime.Now, "transferring funds");
+            int currentNumTransactions = _creditor.GeTransactions().Count;
 
             //Act
-            int initialNumTransactions = creditor.GeTransactions().Count;
-            decimal amount = 25000;
-            creditor.TransferMoney(beneficiary, amount, DateTime.Now, "transferring funds");
-            int currentNumTransactions = creditor.GeTransactions().Count;
+            int expected = initialNumTransactions + 1;
 
             //Assert
-            Assert.That(currentNumTransactions, Is.EqualTo(initialNumTransactions + 1));
+            Assert.That(currentNumTransactions, Is.EqualTo(expected));
         }
 
         [Test]
@@ -100,15 +102,16 @@ namespace Test
         {
             //Arrange
             _mine.LogIn("ugoo11", "ugoo11");
+            int initialNumTransactions = _beneficiary.GeTransactions().Count;
+            decimal amount = 25000;
+            _creditor.TransferMoney(_beneficiary, amount, DateTime.Now, "transferring funds");
+            int currentNumTransactions = _beneficiary.GeTransactions().Count;
 
             //Act
-            int initialNumTransactions = beneficiary.GeTransactions().Count;
-            decimal amount = 25000;
-            creditor.TransferMoney(beneficiary, amount, DateTime.Now, "transferring funds");
-            int currentNumTransactions = beneficiary.GeTransactions().Count;
+            int expected = initialNumTransactions + 1;
 
             //Assert
-            Assert.That(currentNumTransactions, Is.EqualTo(initialNumTransactions + 1));
+            Assert.That(currentNumTransactions, Is.EqualTo(expected));
         }
     }
 }

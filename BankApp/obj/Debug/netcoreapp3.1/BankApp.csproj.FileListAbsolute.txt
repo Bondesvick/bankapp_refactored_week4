@@ -22,3 +22,4 @@ C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\BankA
 C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\BankApp\obj\Debug\netcoreapp3.1\BankApp.dll
 C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\BankApp\obj\Debug\netcoreapp3.1\BankApp.pdb
 C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\BankApp\obj\Debug\netcoreapp3.1\BankApp.genruntimeconfig.cache
+C:\Users\hp\Documents\Visual Studio 2019\Projects\bankapp_refactored_week4\BankApp\obj\Debug\netcoreapp3.1\BankApp.csprojAssemblyReference.cache
